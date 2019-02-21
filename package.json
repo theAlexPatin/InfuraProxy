@@ -1,0 +1,34 @@
+{
+  "name": "infurarelay",
+  "version": "1.0.0",
+  "description": "A Node/Express.js-based web server wrapping the functionality of the Infura API standard HTTPS Web3 methods.",
+  "main": "app.js",
+  "scripts": {
+    "test": "babel-node test/index.js",
+    "start": "pm2 start dist/app.js -i max",
+    "logs": "pm2 logs",
+    "stop": "pm2 delete all",
+    "restart": "pm2 reload all",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "dev": "nodemon src/app.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/theAlexPatin/InfuraRelay.git"
+  },
+  "keywords": [
+    "Infura",
+    "Ethereum",
+    "Blockchain",
+    "Decentralized",
+    "Express.js",
+    "Node",
+    "API Relay"
+  ],
+  "author": "Alexander Patin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theAlexPatin/InfuraRelay/issues"
+  },
+  "homepage": "https://github.com/theAlexPatin/InfuraRelay#readme"
+}
