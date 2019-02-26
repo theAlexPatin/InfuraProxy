@@ -17,14 +17,14 @@ const web3RequestStructure = {
     jsonrpc: Joi.string().empty('').default('2.0'),
     id: Joi.number().default(1),
     method: Joi.string().valid(...web3Methods).required(),
-    params: Joi.array().items(Joi.number(), Joi.string()).default([])
+    params: Joi.array().items(Joi.string()).default([])
   }),
   params: Joi.object({
-    slug: Joi.string().valid(...networks).required()
+    network: Joi.string().valid(...networks).required()
   })
 }
 
-router.route('/:network').get(
+router.route('/:network').post(
   celebrate(web3RequestStructure),
   (req, res, next) => {
     infura(req).then(response => {
@@ -34,7 +34,7 @@ router.route('/:network').get(
       })
     }).catch(err => {
       res.status(400)
-      res.send({
+      res.json({
         ...err
       })
     })
