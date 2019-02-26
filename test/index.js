@@ -9,7 +9,8 @@ axios.post(`http://localhost:${process.env.PORT || 5000}/mainnet`, {
   method: 'eth_getBalance',
   params: [testAccount, 'latest']
 }).then(({ data }) => {
-  console.log(data)
+  console.log('Address: ' + testAccount)
+  console.log('Balance: '+parseInt(data.result, 16) / Math.pow(10, 18))
 }).catch(err => {
   console.log(err.response.data)
 })

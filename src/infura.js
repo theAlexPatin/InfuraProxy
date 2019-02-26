@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export default (req) => {
-  console.log(req.body)
   return axios.post(`https://${req.params.network}.infura.io/${process.env.INFURA_ID}`, {
     ...req.body
   })
