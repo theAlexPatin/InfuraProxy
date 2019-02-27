@@ -34,9 +34,9 @@ Make sure to set `<YOUR_INFURA_ID>` and `<YOUR_INFURA_SECRET>`
 - Enter server logs: `$ npm run logs`
 
 ```
+$ export NODE_ENV=production
 $ npm run build
 $ npm run start
-$ npm run
 ```
 
 ## Making Requests
