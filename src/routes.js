@@ -1,16 +1,22 @@
 import { Router } from 'express'
 import { Joi, celebrate } from 'celebrate'
-import infura from './infura'
+import Infura from './infura'
+import * as Other from './Other'
 import web3Methods from './web3Methods.json'
+import axios from 'axios'
 
+const router = new Router()
+
+
+/**
+ * STANDARD WEB3 REQUESTS
+ */
 const networks = [
   'mainnet',
   'ropsten',
   'rinkeby',
   'kovan'
 ]
-
-const router = new Router()
 
 const web3RequestStructure = {
   body: Joi.object({
@@ -26,18 +32,26 @@ const web3RequestStructure = {
 
 router.route('/:network').post(
   celebrate(web3RequestStructure),
-  (req, res, next) => {
-    infura(req).then(response => {
-      res.json({
-        ...response
-      })
-    }).catch(err => {
-      res.status(400)
-      res.send({
-        ...err
-      })
-    })
-  }
+  Infura
 )
+
+
+/**
+ * OTHER INUFRA ROUTES
+ */
+
+/**
+ * Symbol
+ */
+router.route('/ticker/:symbol').get(
+  celebrate({
+    params: Joi.object({
+      symbol: Joi.string().required()
+    })
+  }),
+  Other.symbol
+)
+
+
 
 export default router

@@ -1,13 +1,16 @@
 import axios from 'axios'
 
-export default (req) => {
-  return axios.post(`https://${req.params.network}.infura.io/${process.env.INFURA_ID}`, {
+export default (req, res, next) => {
+  axios.post(`https://${req.params.network}.infura.io/${process.env.INFURA_ID}`, {
     ...req.body
-  })
-  .then(({ data }) => {
-    return Promise.resolve(data)
-  })
-  .catch(err => {
-    return Promise.resolve(err.response.data)
+  }).then(({ data }) => {
+    res.json({
+      ...data
+    })
+  }).catch(err => {
+    res.status(400)
+    res.send({
+      ...err.response.data
+    })
   })
 }
