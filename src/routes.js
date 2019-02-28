@@ -28,13 +28,12 @@ router.route('/:network').post(
   celebrate(web3RequestStructure),
   (req, res, next) => {
     infura(req).then(response => {
-      res.status(200)
-      res.send({
+      res.json({
         ...response
       })
     }).catch(err => {
       res.status(400)
-      res.json({
+      res.send({
         ...err
       })
     })
