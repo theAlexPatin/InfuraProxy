@@ -23,7 +23,7 @@ const web3RequestStructure = {
     jsonrpc: Joi.string().empty('').default('2.0'),
     id: Joi.number().default(1),
     method: Joi.string().valid(...web3Methods).required(),
-    params: Joi.array().items(Joi.string()).default([])
+    params: Joi.array().default([])
   }),
   params: Joi.object({
     network: Joi.string().valid(...networks).required()
