@@ -2,7 +2,7 @@
   "eth_accounts",
   "eth_blockNumber",
   "eth_estimateGas",
-  "eth_getPrice",
+  "eth_gasPrice",
   "eth_getBalance",
   "eth_getBlockByHash",
   "eth_getBlockByNumber",
