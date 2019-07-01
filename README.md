@@ -1,4 +1,4 @@
-# Infura Relay Server
+# Infura Proxy Server
 
 A Node/Express.js-based web server wrapping the functionality of the Infura API standard HTTPS Web3 methods.
 
